@@ -906,13 +906,31 @@
 
   function setDoc(doc) {
     currentDoc = doc;
+    window.history.replaceState(null, '', '#' + doc);
     render();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'terms' || hash === 'privacy') {
+      currentDoc = hash;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
   // Detect browser language on first load
   const browserLang = navigator.language.slice(0, 2);
   if (['pt', 'en', 'es'].includes(browserLang)) currentLang = browserLang;
+
+  // Detecta âncora na URL
+  const hash = window.location.hash.replace('#', '');
+  if (hash === 'terms' || hash === 'privacy') {
+    currentDoc = hash;
+  } else {
+    window.history.replaceState(null, '', '#' + currentDoc);
+  }
 
   render();
 </script>
