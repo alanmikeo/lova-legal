@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lova Dating App — Legal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #FF416C;
+      --primary-light: #FF6B8A;
+      --accent: #FF4B2B;
+      --bg: #0D0D0D;
+      --bg-card: #1A1A1A;
+      --bg-surface: #242424;
+      --text: #F0F0F0;
+      --text-muted: #888;
+      --border: #2E2E2E;
+      --gradient: linear-gradient(135deg, #FF416C, #FF4B2B);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: 4px;
+      background: var(--bg-surface);
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--gradient);
+      color: #fff;
+    }
+
+    /* ── Tabs ── */
+    .tabs-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tabs-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 24px;
+      gap: 0;
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      padding: 14px 20px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      color: var(--primary-light);
+      border-bottom-color: var(--primary);
+      font-weight: 500;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .doc-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .doc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .doc-updated {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 40px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .section-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary-light);
+      padding: 18px 24px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.01em;
+    }
+
+    .section-body {
+      padding: 24px;
+      color: #C8C8C8;
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+
+    .section-body p { margin-bottom: 12px; }
+    .section-body p:last-child { margin-bottom: 0; }
+
+    .section-body ul {
+      padding-left: 20px;
+      margin: 8px 0 12px;
+    }
+
+    .section-body ul li {
+      margin-bottom: 6px;
+      color: #B0B0B0;
+    }
+
+    .section-body strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── Table ── */
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.85rem;
+    }
+
+    .legal-table th {
+      background: var(--bg-surface);
+      color: var(--primary-light);
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .legal-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #1E1E1E;
+      color: #B0B0B0;
+    }
+
+    .legal-table tr:last-child td { border-bottom: none; }
+
+    /* ── Contact block ── */
+    .contact-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 12px;
+      font-size: 0.88rem;
+      color: #B0B0B0;
+      line-height: 1.7;
+    }
+
+    .contact-block a {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      background: var(--bg-card);
+    }
+
+    footer span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 500;
+    }
+
+    /* ── Fade animation ── */
+    .fade-in { animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .header-inner { height: 56px; }
+      .logo { font-size: 1.3rem; }
+      main { padding: 32px 16px 60px; }
+      .section-body { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Lova</div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
+</header>
+
+<div class="tabs-bar">
+  <div class="tabs-inner">
+    <button class="tab-btn active" id="tab-privacy" onclick="setDoc('privacy')">
+      <span id="tab-privacy-label">Política de Privacidade</span>
+    </button>
+    <button class="tab-btn" id="tab-terms" onclick="setDoc('terms')">
+      <span id="tab-terms-label">Termos de Uso</span>
+    </button>
+  </div>
+</div>
+
+<main id="main-content"></main>
+
+<footer>
+  <span>Lova Dating App</span> &nbsp;·&nbsp; nowiunderwin@gmail.com &nbsp;·&nbsp; <span id="footer-dev"><a href="https://alanmichael.netlify.app" target="_blank">Alan Michael</a></span>
+</footer>
+
+<script>
+  let currentLang = 'pt';
+  let currentDoc  = 'privacy';
+
+  /* ── CONTENT ── */
+  const content = {
+
+    /* ═══════════════════════════════════════════════════
+       PORTUGUÊS
+    ═══════════════════════════════════════════════════ */
+    pt: {
+      tabs: { privacy: 'Política de Privacidade', terms: 'Termos de Uso' },
+      footerDev: 'Alan Michael',
+
+      privacy: {
+        label: 'Legal',
+        title: 'Política de Privacidade',
+        updated: 'Última atualização: junho de 2025',
+        sections: [
+          {
+            title: '1. Introdução',
+            body: `<p>Bem-vindo ao <strong>Lova Dating App</strong> ("Lova", "nós", "nosso"). Esta Política de Privacidade explica como coletamos, usamos, armazenamos e protegemos suas informações pessoais quando você utiliza nosso aplicativo.</p>
+                   <p>Ao criar uma conta no Lova, você confirma que leu e concorda com esta Política. Se não concordar, não utilize o aplicativo.</p>`
+          },
+          {
+            title: '2. Elegibilidade — Quem pode usar o Lova',
+            body: `<p>O Lova é destinado exclusivamente a maiores de <strong>18 anos</strong>. Não coletamos intencionalmente dados de menores de idade. Caso identifiquemos que um usuário é menor de 18 anos, sua conta será imediatamente encerrada e seus dados removidos.</p>`
+          },
+          {
+            title: '3. Dados que coletamos',
+            body: `<p><strong>Dados fornecidos por você:</strong></p>
+                   <ul>
+                     <li>Dados de cadastro: nome, e-mail, data de nascimento, gênero</li>
+                     <li>Perfil: bio, interesses, profissão, fotos (mín. 1, máx. 6)</li>
+                     <li>Áudio de perfil: gravações de voz opcionais</li>
+                     <li>Preferências de descoberta: faixa etária, distância, gênero de interesse</li>
+                     <li>Verificação de identidade: selfie para confirmação de perfil</li>
+                   </ul>
+                   <p><strong>Dados coletados automaticamente:</strong></p>
+                   <ul>
+                     <li>Localização: latitude e longitude para calcular distância entre usuários</li>
+                     <li>Tokens de notificação: Expo Push Token e FCM Token</li>
+                     <li>Dados de uso: swipes, matches, mensagens enviadas</li>
+                     <li>Informações do dispositivo: sistema operacional, versão do app</li>
+                   </ul>`
+          },
+          {
+            title: '4. Como usamos seus dados',
+            body: `<ul>
+                     <li>Criar e gerenciar sua conta</li>
+                     <li>Exibir seu perfil para outros usuários</li>
+                     <li>Calcular distância e sugerir matches compatíveis</li>
+                     <li>Enviar notificações de novos matches e mensagens</li>
+                     <li>Moderar conteúdo e garantir a segurança da plataforma</li>
+                     <li>Processar assinaturas e recursos premium (Lova VIP)</li>
+                     <li>Cumprir obrigações legais</li>
+                   </ul>`
+          },
+          {
+            title: '5. Compartilhamento de dados',
+            body: `<p>Seus dados <strong>não são vendidos</strong> a terceiros. Compartilhamos informações apenas com prestadores de serviço estritamente necessários para o funcionamento do app:</p>
+                   <table class="legal-table">
+                     <thead><tr><th>Serviço</th><th>Finalidade</th></tr></thead>
+                     <tbody>
+                       <tr><td>Supabase</td><td>Banco de dados, autenticação e armazenamento</td></tr>
+                       <tr><td>Firebase (Google)</td><td>Envio de notificações push (FCM)</td></tr>
+                       <tr><td>Google Vision API</td><td>Moderação automática de imagens</td></tr>
+                       <tr><td>RevenueCat</td><td>Gestão de assinaturas e compras in-app</td></tr>
+                       <tr><td>Expo</td><td>Infraestrutura de notificações push</td></tr>
+                     </tbody>
+                   </table>`
+          },
+          {
+            title: '6. Localização',
+            body: `<p>Coletamos sua localização <strong>aproximada</strong> para mostrar a distância entre perfis. Nunca exibimos suas coordenadas exatas para outros usuários. Você pode desativar o acesso à localização nas configurações do dispositivo, mas isso pode limitar funcionalidades do app.</p>`
+          },
+          {
+            title: '7. Fotos e Áudio',
+            body: `<p>Fotos e gravações de voz são armazenadas com segurança no Supabase Storage. Imagens enviadas passam por análise automática da <strong>Google Vision API</strong> para detectar conteúdo impróprio antes de serem publicadas. Áudios são utilizados exclusivamente para exibição no seu perfil.</p>`
+          },
+          {
+            title: '8. Segurança dos dados',
+            body: `<p>Adotamos medidas técnicas para proteger seus dados:</p>
+                   <ul>
+                     <li>Criptografia em trânsito (HTTPS/TLS)</li>
+                     <li>Controles de acesso via Row Level Security (RLS)</li>
+                     <li>Tokens de autenticação com validade limitada</li>
+                   </ul>`
+          },
+          {
+            title: '9. Retenção de dados',
+            body: `<p>Seus dados são mantidos enquanto sua conta estiver ativa. Ao excluir sua conta:</p>
+                   <ul>
+                     <li>Seu perfil é removido imediatamente da descoberta</li>
+                     <li>Fotos e áudios são deletados em até 30 dias</li>
+                     <li>Dados para cumprimento legal podem ser retidos por até 5 anos</li>
+                   </ul>`
+          },
+          {
+            title: '10. Seus direitos (LGPD)',
+            body: `<p>Em conformidade com a <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</strong>, você tem direito a: acesso, correção, exclusão, portabilidade e revogação de consentimento dos seus dados pessoais.</p>
+                   <div class="contact-block">Para exercer esses direitos, entre em contato: <a href="mailto:nowiunderwin@gmail.com">nowiunderwin@gmail.com</a></div>`
+          },
+          {
+            title: '11. Alterações nesta Política',
+            body: `<p>Podemos atualizar esta Política periodicamente. Alterações significativas serão comunicadas via notificação no app. O uso continuado do Lova após as alterações implica aceitação da nova Política.</p>`
+          },
+          {
+            title: '12. Contato',
+            body: `<div class="contact-block">
+                     <strong>E-mail:</strong> <a href="mailto:nowiunderwin@gmail.com">nowiunderwin@gmail.com</a><br>
+                     <strong>App:</strong> Lova Dating App<br>
+                     <strong>Desenvolvedor:</strong> <a href="https://alanmichael.netlify.app" target="_blank">Alan Michael</a>
+                   </div>`
+          }
+        ]
+      },
+
+      terms: {
+        label: 'Legal',
+        title: 'Termos de Uso',
+        updated: 'Última atualização: junho de 2025',
+        sections: [
+          {
+            title: '1. Aceitação dos Termos',
+            body: `<p>Ao criar uma conta ou utilizar o <strong>Lova Dating App</strong>, você concorda com estes Termos de Uso. Caso não concorde, não utilize o aplicativo.</p>`
+          },
+          {
+            title: '2. Elegibilidade',
+            body: `<p>Para usar o Lova você deve ter <strong>18 anos ou mais</strong>, ser capaz de celebrar um contrato legalmente vinculante e não ter sido removido anteriormente da plataforma por violação destes Termos.</p>`
+          },
+          {
+            title: '3. Sua Conta',
+            body: `<p>Você é responsável por fornecer informações verdadeiras durante o cadastro e por manter a confidencialidade da sua senha. É permitida apenas <strong>uma conta por pessoa</strong>. Perfis com informações falsas — incluindo fotos de outras pessoas ou identidade falsa — serão removidos.</p>`
+          },
+          {
+            title: '4. Regras de Conduta',
+            body: `<p>Ao usar o Lova, você concorda em <strong>NÃO</strong>:</p>
+                   <ul>
+                     <li>Publicar conteúdo falso, enganoso ou se passar por outra pessoa</li>
+                     <li>Enviar spam ou conteúdo comercial não solicitado</li>
+                     <li>Assediar, ameaçar ou discriminar outros usuários</li>
+                     <li>Publicar conteúdo sexual explícito, violento ou perturbador</li>
+                     <li>Solicitar dinheiro ou dados financeiros de outros usuários</li>
+                     <li>Usar o app para fins ilegais ou comerciais não autorizados</li>
+                     <li>Criar perfis para menores de idade ou compartilhar conteúdo envolvendo menores</li>
+                     <li>Usar bots ou ferramentas automatizadas para interagir com o app</li>
+                   </ul>`
+          },
+          {
+            title: '5. Conteúdo do Usuário',
+            body: `<p>Você é o único responsável pelo conteúdo que publica. Ao publicar conteúdo no Lova, você nos concede uma licença não exclusiva e gratuita para usá-lo <strong>exclusivamente para operar o aplicativo</strong>. Você mantém todos os direitos sobre seu conteúdo.</p>
+                   <p>Reservamo-nos o direito de remover qualquer conteúdo que viole estes Termos, sem aviso prévio.</p>`
+          },
+          {
+            title: '6. Denúncias e Bloqueios',
+            body: `<p>O Lova disponibiliza ferramentas de <strong>denúncia e bloqueio</strong> em todos os perfis e conversas. Todas as denúncias são analisadas e podem resultar em suspensão ou remoção do perfil denunciado.</p>`
+          },
+          {
+            title: '7. Recursos Premium (Lova VIP)',
+            body: `<p>O Lova oferece recursos premium pagos. Todas as compras são processadas pelo <strong>Google Play Billing</strong>. O cancelamento pode ser feito a qualquer momento nas configurações do Google Play. Reembolsos seguem a política do Google Play.</p>`
+          },
+          {
+            title: '8. Encerramento de Conta',
+            body: `<p>Você pode excluir sua conta a qualquer momento nas configurações do app. Podemos suspender ou encerrar sua conta em caso de violação destes Termos, comportamento abusivo ou exigência legal.</p>`
+          },
+          {
+            title: '9. Isenção de Responsabilidade',
+            body: `<p>O Lova é uma plataforma de conexão entre pessoas. <strong>Não somos responsáveis por</strong> comportamento de outros usuários, encontros realizados fora do aplicativo ou veracidade das informações fornecidas pelos usuários. Use bom senso ao se encontrar pessoalmente com pessoas conhecidas online.</p>`
+          },
+          {
+            title: '10. Lei Aplicável',
+            body: `<p>Estes Termos são regidos pelas leis da <strong>República Federativa do Brasil</strong>, em conformidade com o Código de Defesa do Consumidor (Lei nº 8.078/1990) e a LGPD (Lei nº 13.709/2018).</p>`
+          },
+          {
+            title: '11. Contato',
+            body: `<div class="contact-block">
+                     <strong>E-mail:</strong> <a href="mailto:nowiunderwin@gmail.com">nowiunderwin@gmail.com</a><br>
+                     <strong>App:</strong> Lova Dating App<br>
+                     <strong>Desenvolvedor:</strong> <a href="https://alanmichael.netlify.app" target="_blank">Alan Michael</a>
+                   </div>`
+          }
+        ]
+      }
+    },
+
+    /* ═══════════════════════════════════════════════════
+       ENGLISH
+    ═══════════════════════════════════════════════════ */
+    en: {
+      tabs: { privacy: 'Privacy Policy', terms: 'Terms of Use' },
+      footerDev: 'Alan Michael',
+
+      privacy: {
+        label: 'Legal',
+        title: 'Privacy Policy',
+        updated: 'Last updated: June 2025',
+        sections: [
+          {
+            title: '1. Introduction',
+            body: `<p>Welcome to <strong>Lova Dating App</strong> ("Lova", "we", "our"). This Privacy Policy explains how we collect, use, store, and protect your personal information when you use our application.</p>
+                   <p>By creating an account on Lova, you confirm that you have read and agree to this Policy. If you do not agree, please do not use the application.</p>`
+          },
+          {
+            title: '2. Eligibility — Who can use Lova',
+            body: `<p>Lova is intended exclusively for users aged <strong>18 and over</strong>. We do not intentionally collect data from minors. If we identify that a user is under 18, their account will be immediately terminated and their data deleted.</p>`
+          },
+          {
+            title: '3. Data we collect',
+            body: `<p><strong>Data you provide:</strong></p>
+                   <ul>
+                     <li>Registration data: name, email, date of birth, gender</li>
+                     <li>Profile: bio, interests, occupation, photos (min. 1, max. 6)</li>
+                     <li>Voice profile: optional voice recordings</li>
+                     <li>Discovery preferences: age range, distance, gender preference</li>
+                     <li>Identity verification: selfie for profile confirmation</li>
+                   </ul>
+                   <p><strong>Automatically collected data:</strong></p>
+                   <ul>
+                     <li>Location: latitude and longitude to calculate distance between users</li>
+                     <li>Notification tokens: Expo Push Token and FCM Token</li>
+                     <li>Usage data: swipes, matches, messages sent</li>
+                     <li>Device information: operating system, app version</li>
+                   </ul>`
+          },
+          {
+            title: '4. How we use your data',
+            body: `<ul>
+                     <li>Create and manage your account</li>
+                     <li>Display your profile to other users</li>
+                     <li>Calculate distance and suggest compatible matches</li>
+                     <li>Send notifications for new matches and messages</li>
+                     <li>Moderate content and ensure platform safety</li>
+                     <li>Process subscriptions and premium features (Lova VIP)</li>
+                     <li>Comply with legal obligations</li>
+                   </ul>`
+          },
+          {
+            title: '5. Data sharing',
+            body: `<p>Your data is <strong>never sold</strong> to third parties. We share information only with service providers strictly necessary for the app to function:</p>
+                   <table class="legal-table">
+                     <thead><tr><th>Service</th><th>Purpose</th></tr></thead>
+                     <tbody>
+                       <tr><td>Supabase</td><td>Database, authentication and file storage</td></tr>
+                       <tr><td>Firebase (Google)</td><td>Push notifications (FCM)</td></tr>
+                       <tr><td>Google Vision API</td><td>Automatic image moderation</td></tr>
+                       <tr><td>RevenueCat</td><td>Subscription and in-app purchase management</td></tr>
+                       <tr><td>Expo</td><td>Push notification infrastructure</td></tr>
+                     </tbody>
+                   </table>`
+          },
+          {
+            title: '6. Location',
+            body: `<p>We collect your <strong>approximate</strong> location to show the distance between profiles. We never display your exact coordinates to other users. You may disable location access in your device settings, but this may limit app functionality.</p>`
+          },
+          {
+            title: '7. Photos and Audio',
+            body: `<p>Photos and voice recordings are securely stored in Supabase Storage. Uploaded images are automatically analysed by <strong>Google Vision API</strong> to detect inappropriate content before being published. Audio recordings are used exclusively for display on your profile.</p>`
+          },
+          {
+            title: '8. Data security',
+            body: `<ul>
+                     <li>Encryption in transit (HTTPS/TLS)</li>
+                     <li>Access controls via Row Level Security (RLS)</li>
+                     <li>Authentication tokens with limited validity</li>
+                   </ul>`
+          },
+          {
+            title: '9. Data retention',
+            body: `<p>Your data is kept while your account is active. When you delete your account:</p>
+                   <ul>
+                     <li>Your profile is immediately removed from discovery</li>
+                     <li>Photos and audio are deleted within 30 days</li>
+                     <li>Data required for legal compliance may be retained for up to 5 years</li>
+                   </ul>`
+          },
+          {
+            title: '10. Your rights',
+            body: `<p>You have the right to access, correct, delete, and port your personal data, as well as withdraw consent at any time.</p>
+                   <div class="contact-block">To exercise these rights, contact us: <a href="mailto:nowiunderwin@gmail.com">nowiunderwin@gmail.com</a></div>`
+          },
+          {
+            title: '11. Changes to this Policy',
+            body: `<p>We may update this Policy periodically. Significant changes will be communicated via in-app notification. Continued use of Lova after changes implies acceptance of the new Policy.</p>`
+          },
+          {
+            title: '12. Contact',
+            body: `<div class="contact-block">
+                     <strong>Email:</strong> <a href="mailto:nowiunderwin@gmail.com">nowiunderwin@gmail.com</a><br>
+                     <strong>App:</strong> Lova Dating App<br>
+                     <strong>Developer:</strong> <a href="https://alanmichael.netlify.app" target="_blank">Alan Michael</a>
+                   </div>`
+          }
+        ]
+      },
+
+      terms: {
+        label: 'Legal',
+        title: 'Terms of Use',
+        updated: 'Last updated: June 2025',
+        sections: [
+          {
+            title: '1. Acceptance of Terms',
+            body: `<p>By creating an account or using <strong>Lova Dating App</strong>, you agree to these Terms of Use. If you do not agree, please do not use the application.</p>`
+          },
+          {
+            title: '2. Eligibility',
+            body: `<p>To use Lova you must be <strong>18 years of age or older</strong>, be capable of entering into a legally binding contract, and must not have been previously removed from the platform for violation of these Terms.</p>`
+          },
+          {
+            title: '3. Your Account',
+            body: `<p>You are responsible for providing accurate information during registration and for maintaining the confidentiality of your password. Only <strong>one account per person</strong> is permitted. Profiles with false information — including photos of other people or fake identity — will be removed.</p>`
+          },
+          {
+            title: '4. Rules of Conduct',
+            body: `<p>When using Lova, you agree <strong>NOT to</strong>:</p>
+                   <ul>
+                     <li>Post false, misleading content or impersonate another person</li>
+                     <li>Send spam or unsolicited commercial content</li>
+                     <li>Harass, threaten or discriminate against other users</li>
+                     <li>Post sexually explicit, violent or disturbing content</li>
+                     <li>Solicit money or financial data from other users</li>
+                     <li>Use the app for illegal or unauthorised commercial purposes</li>
+                     <li>Create profiles for minors or share content involving minors</li>
+                     <li>Use bots or automated tools to interact with the app</li>
+                   </ul>`
+          },
+          {
+            title: '5. User Content',
+            body: `<p>You are solely responsible for the content you post. By posting content on Lova, you grant us a non-exclusive, royalty-free licence to use it <strong>solely to operate the application</strong>. You retain all rights to your content.</p>
+                   <p>We reserve the right to remove any content that violates these Terms, without prior notice.</p>`
+          },
+          {
+            title: '6. Reports and Blocks',
+            body: `<p>Lova provides <strong>report and block</strong> tools on all profiles and conversations. All reports are reviewed and may result in suspension or removal of the reported profile.</p>`
+          },
+          {
+            title: '7. Premium Features (Lova VIP)',
+            body: `<p>Lova offers paid premium features. All purchases are processed through <strong>Google Play Billing</strong>. Cancellation can be made at any time in Google Play settings. Refunds follow Google Play policy.</p>`
+          },
+          {
+            title: '8. Account Termination',
+            body: `<p>You may delete your account at any time in the app settings. We may suspend or terminate your account in the event of a violation of these Terms, abusive behaviour, or legal requirement.</p>`
+          },
+          {
+            title: '9. Disclaimer',
+            body: `<p>Lova is a platform connecting people. <strong>We are not responsible for</strong> the behaviour of other users, meetings arranged outside the application, or the accuracy of information provided by users. Use good judgement when meeting people you have connected with online.</p>`
+          },
+          {
+            title: '10. Governing Law',
+            body: `<p>These Terms are governed by the laws of <strong>Brazil</strong>. For international users, local consumer protection laws may also apply.</p>`
+          },
+          {
+            title: '11. Contact',
+            body: `<div class="contact-block">
+                     <strong>Email:</strong> <a href="mailto:nowiunderwin@gmail.com">nowiunderwin@gmail.com</a><br>
+                     <strong>App:</strong> Lova Dating App<br>
+                     <strong>Developer:</strong> <a href="https://alanmichael.netlify.app" target="_blank">Alan Michael</a>
+                   </div>`
+          }
+        ]
+      }
+    },
+
+    /* ═══════════════════════════════════════════════════
+       ESPAÑOL
+    ═══════════════════════════════════════════════════ */
+    es: {
+      tabs: { privacy: 'Política de Privacidad', terms: 'Términos de Uso' },
+      footerDev: 'Alan Michael',
+
+      privacy: {
+        label: 'Legal',
+        title: 'Política de Privacidad',
+        updated: 'Última actualización: junio de 2025',
+        sections: [
+          {
+            title: '1. Introducción',
+            body: `<p>Bienvenido a <strong>Lova Dating App</strong> ("Lova", "nosotros", "nuestro"). Esta Política de Privacidad explica cómo recopilamos, usamos, almacenamos y protegemos tu información personal cuando utilizas nuestra aplicación.</p>
+                   <p>Al crear una cuenta en Lova, confirmas que has leído y aceptas esta Política. Si no estás de acuerdo, por favor no utilices la aplicación.</p>`
+          },
+          {
+            title: '2. Elegibilidad — Quién puede usar Lova',
+            body: `<p>Lova está destinado exclusivamente a mayores de <strong>18 años</strong>. No recopilamos intencionalmente datos de menores de edad. Si identificamos que un usuario es menor de 18 años, su cuenta será inmediatamente cancelada y sus datos eliminados.</p>`
+          },
+          {
+            title: '3. Datos que recopilamos',
+            body: `<p><strong>Datos que tú proporcionas:</strong></p>
+                   <ul>
+                     <li>Datos de registro: nombre, email, fecha de nacimiento, género</li>
+                     <li>Perfil: bio, intereses, ocupación, fotos (mín. 1, máx. 6)</li>
+                     <li>Audio de perfil: grabaciones de voz opcionales</li>
+                     <li>Preferencias de descubrimiento: rango de edad, distancia, género de interés</li>
+                     <li>Verificación de identidad: selfie para confirmación de perfil</li>
+                   </ul>
+                   <p><strong>Datos recopilados automáticamente:</strong></p>
+                   <ul>
+                     <li>Ubicación: latitud y longitud para calcular distancia entre usuarios</li>
+                     <li>Tokens de notificación: Expo Push Token y FCM Token</li>
+                     <li>Datos de uso: swipes, matches, mensajes enviados</li>
+                     <li>Información del dispositivo: sistema operativo, versión de la app</li>
+                   </ul>`
+          },
+          {
+            title: '4. Cómo usamos tus datos',
+            body: `<ul>
+                     <li>Crear y gestionar tu cuenta</li>
+                     <li>Mostrar tu perfil a otros usuarios</li>
+                     <li>Calcular distancia y sugerir matches compatibles</li>
+                     <li>Enviar notificaciones de nuevos matches y mensajes</li>
+                     <li>Moderar contenido y garantizar la seguridad de la plataforma</li>
+                     <li>Procesar suscripciones y recursos premium (Lova VIP)</li>
+                     <li>Cumplir obligaciones legales</li>
+                   </ul>`
+          },
+          {
+            title: '5. Compartición de datos',
+            body: `<p>Tus datos <strong>no se venden</strong> a terceros. Compartimos información solo con proveedores de servicios estrictamente necesarios:</p>
+                   <table class="legal-table">
+                     <thead><tr><th>Servicio</th><th>Finalidad</th></tr></thead>
+                     <tbody>
+                       <tr><td>Supabase</td><td>Base de datos, autenticación y almacenamiento</td></tr>
+                       <tr><td>Firebase (Google)</td><td>Notificaciones push (FCM)</td></tr>
+                       <tr><td>Google Vision API</td><td>Moderación automática de imágenes</td></tr>
+                       <tr><td>RevenueCat</td><td>Gestión de suscripciones y compras in-app</td></tr>
+                       <tr><td>Expo</td><td>Infraestructura de notificaciones push</td></tr>
+                     </tbody>
+                   </table>`
+          },
+          {
+            title: '6. Ubicación',
+            body: `<p>Recopilamos tu ubicación <strong>aproximada</strong> para mostrar la distancia entre perfiles. Nunca mostramos tus coordenadas exactas a otros usuarios. Puedes desactivar el acceso a la ubicación en la configuración de tu dispositivo.</p>`
+          },
+          {
+            title: '7. Fotos y Audio',
+            body: `<p>Las fotos y grabaciones de voz se almacenan de forma segura en Supabase Storage. Las imágenes enviadas son analizadas automáticamente por la <strong>Google Vision API</strong> para detectar contenido inapropiado antes de ser publicadas.</p>`
+          },
+          {
+            title: '8. Seguridad de los datos',
+            body: `<ul>
+                     <li>Cifrado en tránsito (HTTPS/TLS)</li>
+                     <li>Controles de acceso mediante Row Level Security (RLS)</li>
+                     <li>Tokens de autenticación con validez limitada</li>
+                   </ul>`
+          },
+          {
+            title: '9. Retención de datos',
+            body: `<p>Tus datos se conservan mientras tu cuenta esté activa. Al eliminar tu cuenta:</p>
+                   <ul>
+                     <li>Tu perfil se elimina inmediatamente del descubrimiento</li>
+                     <li>Fotos y audios se eliminan en un plazo de 30 días</li>
+                     <li>Datos para cumplimiento legal pueden conservarse hasta 5 años</li>
+                   </ul>`
+          },
+          {
+            title: '10. Tus derechos',
+            body: `<p>Tienes derecho a acceder, corregir, eliminar y portar tus datos personales, así como retirar tu consentimiento en cualquier momento.</p>
+                   <div class="contact-block">Para ejercer estos derechos: <a href="mailto:nowiunderwin@gmail.com">nowiunderwin@gmail.com</a></div>`
+          },
+          {
+            title: '11. Cambios en esta Política',
+            body: `<p>Podemos actualizar esta Política periódicamente. Los cambios significativos se comunicarán mediante notificación en la app. El uso continuado de Lova tras los cambios implica la aceptación de la nueva Política.</p>`
+          },
+          {
+            title: '12. Contacto',
+            body: `<div class="contact-block">
+                     <strong>Email:</strong> <a href="mailto:nowiunderwin@gmail.com">nowiunderwin@gmail.com</a><br>
+                     <strong>App:</strong> Lova Dating App<br>
+                     <strong>Desarrollador:</strong> <a href="https://alanmichael.netlify.app" target="_blank">Alan Michael</a>
+                   </div>`
+          }
+        ]
+      },
+
+      terms: {
+        label: 'Legal',
+        title: 'Términos de Uso',
+        updated: 'Última actualización: junio de 2025',
+        sections: [
+          {
+            title: '1. Aceptación de los Términos',
+            body: `<p>Al crear una cuenta o utilizar <strong>Lova Dating App</strong>, aceptas estos Términos de Uso. Si no estás de acuerdo, por favor no utilices la aplicación.</p>`
+          },
+          {
+            title: '2. Elegibilidad',
+            body: `<p>Para usar Lova debes tener <strong>18 años o más</strong>, ser capaz de celebrar un contrato legalmente vinculante y no haber sido eliminado anteriormente de la plataforma por violación de estos Términos.</p>`
+          },
+          {
+            title: '3. Tu Cuenta',
+            body: `<p>Eres responsable de proporcionar información veraz durante el registro y de mantener la confidencialidad de tu contraseña. Solo se permite <strong>una cuenta por persona</strong>. Los perfiles con información falsa serán eliminados.</p>`
+          },
+          {
+            title: '4. Reglas de Conducta',
+            body: `<p>Al usar Lova, aceptas <strong>NO</strong>:</p>
+                   <ul>
+                     <li>Publicar contenido falso o hacerse pasar por otra persona</li>
+                     <li>Enviar spam o contenido comercial no solicitado</li>
+                     <li>Acosar, amenazar o discriminar a otros usuarios</li>
+                     <li>Publicar contenido sexualmente explícito, violento o perturbador</li>
+                     <li>Solicitar dinero o datos financieros a otros usuarios</li>
+                     <li>Usar la app para fines ilegales o comerciales no autorizados</li>
+                     <li>Crear perfiles para menores o compartir contenido que involucre menores</li>
+                     <li>Usar bots o herramientas automatizadas para interactuar con la app</li>
+                   </ul>`
+          },
+          {
+            title: '5. Contenido del Usuario',
+            body: `<p>Eres el único responsable del contenido que publicas. Al publicar contenido en Lova, nos otorgas una licencia no exclusiva y gratuita para usarlo <strong>exclusivamente para operar la aplicación</strong>. Conservas todos los derechos sobre tu contenido.</p>`
+          },
+          {
+            title: '6. Denuncias y Bloqueos',
+            body: `<p>Lova proporciona herramientas de <strong>denuncia y bloqueo</strong> en todos los perfiles y conversaciones. Todas las denuncias son analizadas y pueden resultar en la suspensión o eliminación del perfil denunciado.</p>`
+          },
+          {
+            title: '7. Recursos Premium (Lova VIP)',
+            body: `<p>Lova ofrece recursos premium de pago. Todas las compras se procesan a través de <strong>Google Play Billing</strong>. La cancelación puede realizarse en cualquier momento desde la configuración de Google Play.</p>`
+          },
+          {
+            title: '8. Cancelación de Cuenta',
+            body: `<p>Puedes eliminar tu cuenta en cualquier momento desde la configuración de la app. Podemos suspender o cancelar tu cuenta en caso de violación de estos Términos, comportamiento abusivo o requerimiento legal.</p>`
+          },
+          {
+            title: '9. Exención de Responsabilidad',
+            body: `<p>Lova es una plataforma de conexión entre personas. <strong>No somos responsables</strong> del comportamiento de otros usuarios, encuentros realizados fuera de la aplicación ni de la veracidad de la información proporcionada por los usuarios.</p>`
+          },
+          {
+            title: '10. Ley Aplicable',
+            body: `<p>Estos Términos se rigen por las leyes de <strong>Brasil</strong>. Para usuarios internacionales, también pueden aplicarse las leyes locales de protección al consumidor.</p>`
+          },
+          {
+            title: '11. Contacto',
+            body: `<div class="contact-block">
+                     <strong>Email:</strong> <a href="mailto:nowiunderwin@gmail.com">nowiunderwin@gmail.com</a><br>
+                     <strong>App:</strong> Lova Dating App<br>
+                     <strong>Desarrollador:</strong> <a href="https://alanmichael.netlify.app" target="_blank">Alan Michael</a>
+                   </div>`
+          }
+        ]
+      }
+    }
+  };
+
+  /* ── Render ── */
+  function render() {
+    const lang = content[currentLang];
+    const doc  = lang[currentDoc];
+
+    // Tabs
+    document.getElementById('tab-privacy-label').textContent = lang.tabs.privacy;
+    document.getElementById('tab-terms-label').textContent   = lang.tabs.terms;
+    document.getElementById('footer-dev').textContent        = lang.footerDev;
+
+    // Active tab style
+    document.getElementById('tab-privacy').className = 'tab-btn' + (currentDoc === 'privacy' ? ' active' : '');
+    document.getElementById('tab-terms').className   = 'tab-btn' + (currentDoc === 'terms'   ? ' active' : '');
+
+    // Lang buttons
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.className = 'lang-btn' + (b.textContent.toLowerCase() === currentLang ? ' active' : '');
+    });
+
+    // HTML lang attribute
+    document.documentElement.lang = currentLang;
+
+    // Content
+    const sectionsHtml = doc.sections.map(s =>
+      `<div class="section">
+        <div class="section-title">${s.title}</div>
+        <div class="section-body">${s.body}</div>
+      </div>`
+    ).join('');
+
+    document.getElementById('main-content').innerHTML =
+      `<div class="doc-header fade-in">
+        <div class="doc-label">${doc.label}</div>
+        <h1 class="doc-title">${doc.title}</h1>
+        <p class="doc-updated">${doc.updated}</p>
+      </div>
+      <div class="fade-in">${sectionsHtml}</div>`;
+  }
+
+  function setLang(lang) {
+    currentLang = lang;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function setDoc(doc) {
+    currentDoc = doc;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Detect browser language on first load
+  const browserLang = navigator.language.slice(0, 2);
+  if (['pt', 'en', 'es'].includes(browserLang)) currentLang = browserLang;
+
+  render();
+</script>
+</body>
+</html>
