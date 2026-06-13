@@ -378,6 +378,7 @@
                      <li>Tokens de notificação: Expo Push Token e FCM Token</li>
                      <li>Dados de uso: swipes, matches, mensagens enviadas</li>
                      <li>Informações do dispositivo: sistema operacional, versão do app</li>
+                     <li>Dados de publicidade: endereço IP, identificadores do dispositivo, identificador de publicidade, interações com anúncios e informações de diagnóstico relacionadas ao Google AdMob</li>
                    </ul>`
           },
           {
@@ -389,6 +390,7 @@
                      <li>Enviar notificações de novos matches e mensagens</li>
                      <li>Moderar conteúdo e garantir a segurança da plataforma</li>
                      <li>Processar assinaturas e recursos premium (Lova VIP)</li>
+                     <li>Exibir anúncios, medir desempenho de anúncios e prevenir fraude em publicidade</li>
                      <li>Cumprir obrigações legais</li>
                    </ul>`
           },
@@ -397,9 +399,9 @@
             body: `<p>Tratamos seus dados pessoais com base nas hipóteses previstas na LGPD, conforme a finalidade de cada tratamento:</p>
                    <ul>
                      <li><strong>Execução de contrato:</strong> para criar sua conta, exibir perfis, permitir matches, conversas e recursos essenciais do app.</li>
-                     <li><strong>Consentimento:</strong> para recursos opcionais, como localização do dispositivo, notificações push, áudio de perfil e verificação de identidade, quando aplicável.</li>
+                     <li><strong>Consentimento:</strong> para recursos opcionais, como localização do dispositivo, notificações push, áudio de perfil, verificação de identidade e anúncios personalizados, quando aplicável.</li>
                      <li><strong>Cumprimento de obrigação legal:</strong> para atender solicitações de autoridades, obrigações regulatórias, fiscais ou determinações legais.</li>
-                     <li><strong>Legítimo interesse:</strong> para melhorar a experiência, prevenir abusos, manter a segurança da plataforma e proteger usuários, sempre respeitando seus direitos e expectativas.</li>
+                     <li><strong>Legítimo interesse:</strong> para melhorar a experiência, prevenir abusos, manter a segurança da plataforma, proteger usuários, exibir anúncios não personalizados e medir desempenho, sempre respeitando seus direitos e expectativas.</li>
                      <li><strong>Exercício regular de direitos:</strong> para manter registros necessários em disputas, denúncias, prevenção a fraudes ou defesa de direitos.</li>
                    </ul>`
           },
@@ -412,10 +414,12 @@
                        <tr><td>Supabase</td><td>Banco de dados, autenticação e armazenamento</td></tr>
                        <tr><td>Firebase (Google)</td><td>Envio de notificações push (FCM)</td></tr>
                        <tr><td>Google Vision API</td><td>Moderação automática de imagens</td></tr>
+                       <tr><td>Google AdMob</td><td>Exibição, medição e segurança de anúncios</td></tr>
                        <tr><td>RevenueCat</td><td>Gestão de assinaturas e compras in-app</td></tr>
                        <tr><td>Expo</td><td>Infraestrutura de notificações push</td></tr>
                      </tbody>
-                   </table>`
+                   </table>
+                   <p>Quando anúncios forem exibidos no app, o Google AdMob poderá coletar e compartilhar dados como endereço IP, interações com anúncios, informações de diagnóstico e identificadores do dispositivo para publicidade, análise e prevenção de fraude. Quando aplicável, anúncios personalizados dependerão das permissões, escolhas de privacidade e configurações do dispositivo do usuário.</p>`
           },
           {
             title: '8. Localização',
@@ -582,6 +586,7 @@
                      <li>Notification tokens: Expo Push Token and FCM Token</li>
                      <li>Usage data: swipes, matches, messages sent</li>
                      <li>Device information: operating system, app version</li>
+                     <li>Advertising data: IP address, device identifiers, advertising ID, ad interactions, and diagnostic information related to Google AdMob</li>
                    </ul>`
           },
           {
@@ -593,6 +598,7 @@
                      <li>Send notifications for new matches and messages</li>
                      <li>Moderate content and ensure platform safety</li>
                      <li>Process subscriptions and premium features (Lova VIP)</li>
+                     <li>Display ads, measure ad performance, and prevent advertising fraud</li>
                      <li>Comply with legal obligations</li>
                    </ul>`
           },
@@ -601,9 +607,9 @@
             body: `<p>We process your personal data based on the legal grounds that apply to each purpose:</p>
                    <ul>
                      <li><strong>Performance of a contract:</strong> to create your account, display profiles, enable matches, conversations, and essential app features.</li>
-                     <li><strong>Consent:</strong> for optional features such as device location, push notifications, voice profile, and identity verification, when applicable.</li>
+                     <li><strong>Consent:</strong> for optional features such as device location, push notifications, voice profile, identity verification, and personalized ads, when applicable.</li>
                      <li><strong>Compliance with legal obligations:</strong> to respond to authorities, regulatory duties, tax requirements, or legal orders.</li>
-                     <li><strong>Legitimate interests:</strong> to improve the experience, prevent abuse, maintain platform security, and protect users, while respecting your rights and expectations.</li>
+                     <li><strong>Legitimate interests:</strong> to improve the experience, prevent abuse, maintain platform security, protect users, display non-personalized ads, and measure performance, while respecting your rights and expectations.</li>
                      <li><strong>Exercise of legal rights:</strong> to keep records needed for disputes, reports, fraud prevention, or legal defense.</li>
                    </ul>`
           },
@@ -616,10 +622,12 @@
                        <tr><td>Supabase</td><td>Database, authentication and file storage</td></tr>
                        <tr><td>Firebase (Google)</td><td>Push notifications (FCM)</td></tr>
                        <tr><td>Google Vision API</td><td>Automatic image moderation</td></tr>
+                       <tr><td>Google AdMob</td><td>Ad display, measurement, and ad security</td></tr>
                        <tr><td>RevenueCat</td><td>Subscription and in-app purchase management</td></tr>
                        <tr><td>Expo</td><td>Push notification infrastructure</td></tr>
                      </tbody>
-                   </table>`
+                   </table>
+                   <p>When ads are displayed in the app, Google AdMob may collect and share data such as IP address, ad interactions, diagnostic information, and device identifiers for advertising, analytics, and fraud prevention. When applicable, personalized ads depend on the user's permissions, privacy choices, and device settings.</p>`
           },
           {
             title: '8. Location',
@@ -785,6 +793,7 @@
                      <li>Tokens de notificación: Expo Push Token y FCM Token</li>
                      <li>Datos de uso: swipes, matches, mensajes enviados</li>
                      <li>Información del dispositivo: sistema operativo, versión de la app</li>
+                     <li>Datos de publicidad: dirección IP, identificadores del dispositivo, identificador de publicidad, interacciones con anuncios e información de diagnóstico relacionada con Google AdMob</li>
                    </ul>`
           },
           {
@@ -796,6 +805,7 @@
                      <li>Enviar notificaciones de nuevos matches y mensajes</li>
                      <li>Moderar contenido y garantizar la seguridad de la plataforma</li>
                      <li>Procesar suscripciones y recursos premium (Lova VIP)</li>
+                     <li>Mostrar anuncios, medir el rendimiento de los anuncios y prevenir fraude publicitario</li>
                      <li>Cumplir obligaciones legales</li>
                    </ul>`
           },
@@ -804,9 +814,9 @@
             body: `<p>Tratamos tus datos personales con base en las hipótesis legales aplicables a cada finalidad:</p>
                    <ul>
                      <li><strong>Ejecución de contrato:</strong> para crear tu cuenta, mostrar perfiles, permitir matches, conversaciones y funciones esenciales de la app.</li>
-                     <li><strong>Consentimiento:</strong> para funciones opcionales, como ubicación del dispositivo, notificaciones push, audio de perfil y verificación de identidad, cuando corresponda.</li>
+                     <li><strong>Consentimiento:</strong> para funciones opcionales, como ubicación del dispositivo, notificaciones push, audio de perfil, verificación de identidad y anuncios personalizados, cuando corresponda.</li>
                      <li><strong>Cumplimiento de obligaciones legales:</strong> para responder a autoridades, obligaciones regulatorias, fiscales u órdenes legales.</li>
-                     <li><strong>Interés legítimo:</strong> para mejorar la experiencia, prevenir abusos, mantener la seguridad de la plataforma y proteger a los usuarios, respetando tus derechos y expectativas.</li>
+                     <li><strong>Interés legítimo:</strong> para mejorar la experiencia, prevenir abusos, mantener la seguridad de la plataforma, proteger a los usuarios, mostrar anuncios no personalizados y medir rendimiento, respetando tus derechos y expectativas.</li>
                      <li><strong>Ejercicio de derechos legales:</strong> para mantener registros necesarios en disputas, denuncias, prevención de fraudes o defensa de derechos.</li>
                    </ul>`
           },
@@ -819,10 +829,12 @@
                        <tr><td>Supabase</td><td>Base de datos, autenticación y almacenamiento</td></tr>
                        <tr><td>Firebase (Google)</td><td>Notificaciones push (FCM)</td></tr>
                        <tr><td>Google Vision API</td><td>Moderación automática de imágenes</td></tr>
+                       <tr><td>Google AdMob</td><td>Exhibición, medición y seguridad de anuncios</td></tr>
                        <tr><td>RevenueCat</td><td>Gestión de suscripciones y compras in-app</td></tr>
                        <tr><td>Expo</td><td>Infraestructura de notificaciones push</td></tr>
                      </tbody>
-                   </table>`
+                   </table>
+                   <p>Cuando se muestren anuncios en la app, Google AdMob podrá recopilar y compartir datos como dirección IP, interacciones con anuncios, información de diagnóstico e identificadores del dispositivo para publicidad, análisis y prevención de fraude. Cuando corresponda, los anuncios personalizados dependerán de los permisos, elecciones de privacidad y configuraciones del dispositivo del usuario.</p>`
           },
           {
             title: '8. Ubicación',
